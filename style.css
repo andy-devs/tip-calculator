@@ -41,11 +41,17 @@ body {
 	width: 55%;
 }
 
+#bill {
+	background: url("./images/icon-dollar.svg") no-repeat scroll 3% 50%;
+}
+#number-of-people {
+	background: url("./images/icon-person.svg") no-repeat scroll 3% 50%;
+}
 #bill,
 #number-of-people {
 	font-size: 1.5rem;
-	padding: 0.6rem 0.8rem 0.6rem 0;
-	width: 95%;
+	padding: 0.6rem 0.8rem 0.6rem 2rem;
+	width: 88%;
 	background-color: var(--light-grayish-transparent-cyan);
 	border: none;
 	border-radius: 4px;
@@ -82,6 +88,7 @@ input::-webkit-inner-spin-button {
 	grid-template-columns: 1fr 1fr 1fr;
 }
 .tips__grid .button {
+	cursor: pointer;
 	font-size: 1.5rem;
 	width: 80%;
 	margin-top: 1rem;
@@ -90,6 +97,10 @@ input::-webkit-inner-spin-button {
 	color: white;
 	border-radius: 5px;
 	background-color: var(--very-dark-cyan);
+}
+.tips__grid .active {
+	background-color: var(--main-color-strong-cyan);
+	color: var(--very-dark-cyan);
 }
 .tips__grid .custom {
 	margin-top: 1rem;
