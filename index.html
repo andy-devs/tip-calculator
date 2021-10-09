@@ -35,46 +35,54 @@
 			<div class="calculator-control">
 				<div class="bill">
 					<label for="bill">Bill</label>
-					<input type="number" id="bill" name="bill" />
-				</div>
-				<div class="tips">
-					<label for="tip">Select Tip %</label>
-					<input
-						type="checkbox"
-						id="5"
-						hidden
-						class="tip-check"
-					/><label class="button" for="5">5%</label>
-					<input
-						type="checkbox"
-						id="10"
-						hidden
-						class="tip-check"
-					/><label class="button" for="10">10%</label>
-					<input
-						type="checkbox"
-						id="15"
-						hidden
-						class="tip-check"
-					/><label class="button" for="10">15%</label>
-					<input
-						type="checkbox"
-						id="25"
-						hidden
-						class="tip-check"
-					/><label class="button" for="25">25%</label>
-					<input
-						type="checkbox"
-						id="50"
-						hidden
-						class="tip-check"
-					/><label class="button" for="50">50%</label>
 					<input
 						type="number"
-						id="custom"
-						class="tip-check"
-						placeholder="Custom"
+						id="bill"
+						name="bill"
+						placeholder="0"
 					/>
+				</div>
+				<div class="tips">
+					<label for="tip" class="tips__label">Select Tip %</label>
+					<div class="tips__grid">
+						<input
+							type="checkbox"
+							id="5"
+							hidden
+							class="tip-check"
+						/><label class="button left-item" for="5">5%</label>
+						<input
+							type="checkbox"
+							id="10"
+							hidden
+							class="tip-check"
+						/><label class="button" for="10">10%</label>
+						<input
+							type="checkbox"
+							id="15"
+							hidden
+							class="tip-check"
+						/><label class="button" for="10">15%</label>
+						<input
+							type="checkbox"
+							id="25"
+							hidden
+							class="tip-check"
+						/><label class="button" for="25">25%</label>
+						<input
+							type="checkbox"
+							id="50"
+							hidden
+							class="tip-check"
+						/><label class="button" for="50">50%</label>
+						<input
+							class="custom"
+							type="number"
+							id="custom"
+							class="tip-check"
+							placeholder="Custom"
+						/>
+					</div>
 				</div>
 				<div class="people">
 					<label for="number-of-people">Number of People</label>
@@ -82,19 +90,28 @@
 						type="number"
 						id="number-of-people"
 						name="number-of-people"
+						placeholder="0"
 					/>
 				</div>
 			</div>
 			<div class="calculator-result">
-				<div class="calculator-result__tip-amount">
-					<h1>Tip Amount</h1>
-					<p>/ person</p>
+				<div class="result__contents">
+					<div class="calculator-result__tip-amount">
+						<div class="tip-amount__text">
+							<h2>Tip Amount</h2>
+							<p>/ person</p>
+						</div>
+						<div class="tip-amount__nums">$0.00</div>
+					</div>
+					<div class="calculator-result__total">
+						<div class="total__text">
+							<h2>Total</h2>
+							<p>/ person</p>
+						</div>
+						<div class="total__nums">$0.00</div>
+					</div>
 				</div>
-				<div class="calculator-result__total">
-					<h1>Total</h1>
-					<p>/ person</p>
-				</div>
-				<button>Reset</button>
+				<button class="resetbtn">RESET</button>
 			</div>
 		</div>
 		<!-- <div class="attribution">
