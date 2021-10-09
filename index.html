@@ -20,15 +20,6 @@
 		<title>Frontend Mentor | Tip calculator app</title>
 
 		<!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-		<style>
-			.attribution {
-				font-size: 11px;
-				text-align: center;
-			}
-			.attribution a {
-				color: hsl(228, 45%, 44%);
-			}
-		</style>
 	</head>
 	<body>
 		<div class="calculator">
@@ -47,6 +38,7 @@
 					<div class="tips__grid">
 						<input
 							type="checkbox"
+							value="5"
 							id="5"
 							hidden
 							class="tip-check"
@@ -54,24 +46,28 @@
 						<input
 							type="checkbox"
 							id="10"
+							value="10"
 							hidden
 							class="tip-check"
 						/><label class="button" for="10">10%</label>
 						<input
 							type="checkbox"
 							id="15"
+							value="15"
 							hidden
 							class="tip-check"
 						/><label class="button" for="15">15%</label>
 						<input
 							type="checkbox"
 							id="25"
+							value="25"
 							hidden
 							class="tip-check"
 						/><label class="button" for="25">25%</label>
 						<input
 							type="checkbox"
 							id="50"
+							value="50"
 							hidden
 							class="tip-check"
 						/><label class="button" for="50">50%</label>
@@ -101,14 +97,14 @@
 							<h2>Tip Amount</h2>
 							<p>/ person</p>
 						</div>
-						<div class="tip-amount__nums">$0.00</div>
+						<div class="tip-amount__nums"><p>$0.00</p></div>
 					</div>
 					<div class="calculator-result__total">
 						<div class="total__text">
 							<h2>Total</h2>
 							<p>/ person</p>
 						</div>
-						<div class="total__nums">$0.00</div>
+						<div class="total__nums"><p>$0.00</p></div>
 					</div>
 				</div>
 				<button class="resetbtn">RESET</button>

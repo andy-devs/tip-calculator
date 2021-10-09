@@ -14,7 +14,7 @@ body {
 	background-color: var(--light-grayish-cyan);
 	height: 100vh;
 	font-size: 24px;
-	font-family: "Space Mono", monospace;
+	font-family: 'Space Mono', monospace;
 	display: grid;
 	place-items: center;
 }
@@ -42,13 +42,15 @@ body {
 }
 
 #bill {
-	background: url("./images/icon-dollar.svg") no-repeat scroll 3% 50%;
+	background: url('./images/icon-dollar.svg') no-repeat scroll 3% 50%;
 }
 #number-of-people {
-	background: url("./images/icon-person.svg") no-repeat scroll 3% 50%;
+	background: url('./images/icon-person.svg') no-repeat scroll 3% 50%;
 }
 #bill,
 #number-of-people {
+	color: var(--very-dark-cyan);
+	font-weight: 700;
 	font-size: 1.5rem;
 	padding: 0.6rem 0.8rem 0.6rem 2rem;
 	width: 88%;
@@ -56,12 +58,12 @@ body {
 	border: none;
 	border-radius: 4px;
 	text-align: right;
-	font-family: "Space Mono", monospace;
+	font-family: 'Space Mono', monospace;
 }
 input:focus {
 	outline: solid 2px var(--main-color-strong-cyan);
 }
-input[type="number"] {
+input[type='number'] {
 	-moz-appearance: textfield;
 }
 
@@ -110,7 +112,7 @@ input::-webkit-inner-spin-button {
 	border: none;
 	border-radius: 4px;
 	text-align: center;
-	font-family: "Space Mono", monospace;
+	font-family: 'Space Mono', monospace;
 	width: 80%;
 	padding: 0.8rem 0.5rem;
 }
@@ -151,8 +153,8 @@ input::-webkit-inner-spin-button {
 	display: flex;
 	flex-direction: row;
 }
-.tip-amount__nums,
-.total__nums {
+.tip-amount__nums p,
+.total__nums p {
 	font-weight: 600;
 	font-size: 2.5rem;
 	color: var(--main-color-strong-cyan);
@@ -161,15 +163,28 @@ input::-webkit-inner-spin-button {
 	font-weight: 400;
 	font-size: 1rem;
 }
-.calculator-result p {
+.tip-amount__text p,
+.total__text p {
 	font-size: 0.9rem;
 	color: var(--main-color-strong-cyan);
 }
 .resetbtn {
+	font-family: 'Space Mono', monospace;
+	font-size: 1.2rem;
+	letter-spacing: 2px;
+	font-weight: 700;
 	margin-bottom: 0.7rem;
-	padding: 1em 4em;
+	padding: 0.5em 3.5em;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
 	background-color: var(--main-color-strong-cyan);
+	transition: background-color 0.2s ease-in;
+	-webkit-transition: background-color 0.2s ease-in;
+	-moz-transition: background-color 0.2s ease-in;
+	-ms-transition: background-color 0.2s ease-in;
+	-o-transition: background-color 0.2s ease-in;
+}
+.resetbtn:hover {
+	background-color: var(--light-grayish-cyan);
 }
