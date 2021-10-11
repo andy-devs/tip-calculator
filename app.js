@@ -16,27 +16,11 @@ let tipValue = 0;
 // Checking for values in inputs and setting a result
 
 bill.addEventListener('keyup', (e) => {
-	if ((e.target.value != 0 || numberOfPeople.value != 0) && tipValue != 0) {
-		tipAmount.innerHTML = `<p>$${parseFloat(
-			e.target.value * parseFloat(tipValue / 100)
-		)}</p>`;
-		totalAmount.innerHTML = `<p>$${parseFloat(
-			(e.target.value * parseFloat(tipValue / 100)) / numberOfPeople.value
-		)}</p>`;
-	} else {
-		tipAmount.innerHTML = '<p>$0.00</p>';
-		totalAmount.innerHTML = '<p>$0.00</p>';
-	}
+	update();
 });
 
 numberOfPeople.addEventListener('keyup', (e) => {
-	if ((e.target.value != 0 || bill.value != 0) && tipValue != 0) {
-		totalAmount.innerHTML = `<p>$${parseFloat(
-			(bill.value * parseFloat(tipValue / 100)) / numberOfPeople.value
-		)}</p>`;
-	} else {
-		totalAmount.innerHTML = `<p>$0.00</p>`;
-	}
+	update();
 });
 
 // Removing classes from tip percentages when clicking on custom input
@@ -44,6 +28,10 @@ numberOfPeople.addEventListener('keyup', (e) => {
 customInput.addEventListener('click', (e) => {
 	removeActiveClass(checkButtons);
 	removeActiveClass(viewButtons);
+});
+customInput.addEventListener('keyup', (e) => {
+	tipValue = parseFloat(e.target.value);
+	update();
 });
 
 // Iterating over checkboxes and their labels to set an active class and get their value
@@ -54,22 +42,12 @@ for (let btn of checkButtons) {
 			e.target.classList.toggle('active');
 			tipValue = 0;
 		} else {
+			customInput.value = null;
 			tipValue = parseFloat(e.target.value);
-			console.log(tipValue);
 			removeActiveClass(checkButtons);
 			addClass(e);
 		}
-		if (bill.value != 0) {
-			tipAmount.innerHTML = `<p>$${parseFloat(
-				bill.value * parseFloat(tipValue / 100)
-			)}</p>`;
-			totalAmount.innerHTML = `<p>$${parseFloat(
-				(bill.value * parseFloat(tipValue / 100)) / numberOfPeople.value
-			)}</p>`;
-		} else {
-			tipAmount.innerHTML = '<p>$0.00</p>';
-			totalAmount.innerHTML = '<p>$0.00</p>';
-		}
+		update();
 	});
 }
 
@@ -108,4 +86,17 @@ function reset(items, secondItems) {
 	customInput.value = null;
 	tipAmount.innerHTML = '<p>$0.00</p>';
 	totalAmount.innerHTML = '<p>$0.00</p>';
+}
+function update() {
+	if (bill.value != 0 && numberOfPeople.value) {
+		tipAmount.innerHTML = `<p>$${parseFloat(
+			bill.value * parseFloat(tipValue / 100)
+		)}</p>`;
+		totalAmount.innerHTML = `<p>$${parseFloat(
+			(bill.value * parseFloat(tipValue / 100)) / numberOfPeople.value
+		)}</p>`;
+	} else {
+		tipAmount.innerHTML = '<p>$0.00</p>';
+		totalAmount.innerHTML = '<p>$0.00</p>';
+	}
 }
