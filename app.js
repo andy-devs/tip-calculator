@@ -1,35 +1,36 @@
 // Getting all components that we need
 
-const checkButtons = document.querySelectorAll('.tip-check');
-const viewButtons = document.querySelectorAll('.button');
-const customInput = document.querySelector('.custom');
+const checkButtons = document.querySelectorAll(".tip-check");
+const viewButtons = document.querySelectorAll(".button");
+const customInput = document.querySelector(".custom");
 
-const bill = document.querySelector('#bill');
-const numberOfPeople = document.querySelector('#number-of-people');
-const tipAmount = document.querySelector('.tip-amount__nums');
-const totalAmount = document.querySelector('.total__nums');
-const resetButton = document.querySelector('.resetbtn');
+const bill = document.querySelector("#bill");
+const numberOfPeople = document.querySelector("#number-of-people");
+const tipAmount = document.querySelector(".tip-amount__nums");
+const totalAmount = document.querySelector(".total__nums");
+const resetButton = document.querySelector(".resetbtn");
+const restrictAlert = document.querySelector(".restrict-alert");
 
-const tip = document.querySelector('.tip-check');
+const tip = document.querySelector(".tip-check");
 let tipValue = 0;
 
 // Checking for values in inputs and setting a result
 
-bill.addEventListener('keyup', (e) => {
+bill.addEventListener("keyup", (e) => {
 	update();
 });
 
-numberOfPeople.addEventListener('keyup', (e) => {
+numberOfPeople.addEventListener("keyup", (e) => {
 	update();
 });
 
 // Removing classes from tip percentages when clicking on custom input
 
-customInput.addEventListener('click', (e) => {
+customInput.addEventListener("click", (e) => {
 	removeActiveClass(checkButtons);
 	removeActiveClass(viewButtons);
 });
-customInput.addEventListener('keyup', (e) => {
+customInput.addEventListener("keyup", (e) => {
 	tipValue = parseFloat(e.target.value);
 	update();
 });
@@ -37,9 +38,9 @@ customInput.addEventListener('keyup', (e) => {
 // Iterating over checkboxes and their labels to set an active class and get their value
 
 for (let btn of checkButtons) {
-	btn.addEventListener('click', (e) => {
-		if (e.target.classList.contains('active')) {
-			e.target.classList.toggle('active');
+	btn.addEventListener("click", (e) => {
+		if (e.target.classList.contains("active")) {
+			e.target.classList.toggle("active");
 			tipValue = 0;
 		} else {
 			customInput.value = null;
@@ -52,9 +53,9 @@ for (let btn of checkButtons) {
 }
 
 for (let view of viewButtons) {
-	view.addEventListener('click', (e) => {
-		if (e.target.classList.contains('active')) {
-			e.target.classList.toggle('active');
+	view.addEventListener("click", (e) => {
+		if (e.target.classList.contains("active")) {
+			e.target.classList.toggle("active");
 		} else {
 			removeActiveClass(viewButtons);
 			addClass(e);
@@ -64,39 +65,57 @@ for (let view of viewButtons) {
 
 // Reset button
 
-resetButton.addEventListener('click', (e) => {
+resetButton.addEventListener("click", (e) => {
 	reset(checkButtons, viewButtons);
+});
+
+// Checks and restrictions
+
+numberOfPeople.addEventListener("keyup", (e) => {
+	if (e.target.value == 0 || e.target.value == null) {
+		e.target.classList.add("restrict");
+		restrictAlert.classList.remove("display-none");
+	} else {
+		e.target.classList.remove("restrict");
+		restrictAlert.classList.add("display-none");
+	}
 });
 
 // Functions that help out with classes
 
 function removeActiveClass(items) {
 	for (let i of items) {
-		i.classList.remove('active');
+		i.classList.remove("active");
 	}
 }
 function addClass(event) {
-	event.target.classList.add('active');
+	event.target.classList.add("active");
 }
 function reset(items, secondItems) {
 	removeActiveClass(items);
 	removeActiveClass(secondItems);
 	bill.value = null;
 	numberOfPeople.value = null;
+	numberOfPeople.classList.add("restrict");
+	restrictAlert.classList.remove("display-none");
 	customInput.value = null;
-	tipAmount.innerHTML = '<p>$0.00</p>';
-	totalAmount.innerHTML = '<p>$0.00</p>';
+	tipAmount.innerHTML = "<p>$0.00</p>";
+	totalAmount.innerHTML = "<p>$0.00</p>";
 }
 function update() {
 	if (bill.value != 0 && numberOfPeople.value) {
 		tipAmount.innerHTML = `<p>$${parseFloat(
-			bill.value * parseFloat(tipValue / 100)
+			Math.round(bill.value * parseFloat(tipValue / 100) * 100) / 100
 		)}</p>`;
 		totalAmount.innerHTML = `<p>$${parseFloat(
-			(bill.value * parseFloat(tipValue / 100)) / numberOfPeople.value
+			Math.round(
+				((bill.value * parseFloat(tipValue / 100)) /
+					numberOfPeople.value) *
+					100
+			) / 100
 		)}</p>`;
 	} else {
-		tipAmount.innerHTML = '<p>$0.00</p>';
-		totalAmount.innerHTML = '<p>$0.00</p>';
+		tipAmount.innerHTML = "<p>$0.00</p>";
+		totalAmount.innerHTML = "<p>$0.00</p>";
 	}
 }

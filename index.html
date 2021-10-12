@@ -27,7 +27,9 @@
 				<div class="bill">
 					<label for="bill">Bill</label>
 					<input
+						min="1"
 						type="number"
+						class="bill__input"
 						id="bill"
 						name="bill"
 						placeholder="0"
@@ -72,6 +74,7 @@
 							class="tip-check"
 						/><label class="button" for="50">50%</label>
 						<input
+							min="1"
 							class="custom"
 							type="number"
 							id="custom"
@@ -81,8 +84,13 @@
 					</div>
 				</div>
 				<div class="people">
-					<label for="number-of-people">Number of People</label>
+					<label for="number-of-people"
+						>Number of People
+						<span class="restrict-alert">Can't be zero</span></label
+					>
 					<input
+						min="1"
+						class="number-of-people__input restrict"
 						type="number"
 						id="number-of-people"
 						name="number-of-people"
