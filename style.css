@@ -23,7 +23,8 @@ body {
 	justify-content: center;
 }
 .logo {
-	margin-bottom: 4rem;
+	padding-bottom: 1rem;
+	margin-bottom: 2rem;
 }
 .calculator {
 	padding: 2rem;
