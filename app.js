@@ -13,14 +13,19 @@ const restrictAlert = document.querySelector(".restrict-alert");
 
 const tip = document.querySelector(".tip-check");
 let tipValue = 0;
+const maxBillLength = 6;
+const maxPeopleLength = 2;
+const maxTipLength = 2;
 
 // Checking for values in inputs and setting a result
 
 bill.addEventListener("keyup", (e) => {
+	limit(bill, maxBillLength)
 	update();
 });
 
 numberOfPeople.addEventListener("keyup", (e) => {
+	limit(numberOfPeople, maxPeopleLength)
 	update();
 });
 
@@ -31,6 +36,7 @@ customInput.addEventListener("click", (e) => {
 	removeActiveClass(viewButtons);
 });
 customInput.addEventListener("keyup", (e) => {
+	limit(customInput, maxTipLength)
 	tipValue = parseFloat(e.target.value);
 	update();
 });
@@ -99,6 +105,7 @@ function reset(items, secondItems) {
 	numberOfPeople.classList.add("restrict");
 	restrictAlert.classList.remove("display-none");
 	customInput.value = null;
+	tipValue = null;
 	tipAmount.innerHTML = "<p>$0.00</p>";
 	totalAmount.innerHTML = "<p>$0.00</p>";
 }
@@ -117,5 +124,10 @@ function update() {
 	} else {
 		tipAmount.innerHTML = "<p>$0.00</p>";
 		totalAmount.innerHTML = "<p>$0.00</p>";
+	}
+}
+function limit(elem, maxLength) {
+	if (elem.value.length > maxLength) {
+		elem.value = elem.value.substr(0, maxLength);
 	}
 }

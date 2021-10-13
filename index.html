@@ -27,12 +27,13 @@
 				<div class="bill">
 					<label for="bill">Bill</label>
 					<input
-						min="1"
+						min="0"
 						type="number"
 						class="bill__input"
 						id="bill"
 						name="bill"
 						placeholder="0"
+						oninput="validity.valid||(value='');"
 					/>
 				</div>
 				<div class="tips">
@@ -74,12 +75,13 @@
 							class="tip-check"
 						/><label class="button" for="50">50%</label>
 						<input
-							min="1"
+							min="0"
 							class="custom"
 							type="number"
 							id="custom"
 							class="tip-check"
 							placeholder="Custom"
+							oninput="validity.valid||(value='');"
 						/>
 					</div>
 				</div>
@@ -89,12 +91,13 @@
 						<span class="restrict-alert">Can't be zero</span></label
 					>
 					<input
-						min="1"
+						min="0"
 						class="number-of-people__input restrict"
 						type="number"
 						id="number-of-people"
 						name="number-of-people"
 						placeholder="0"
+						oninput="validity.valid||(value='');"
 					/>
 				</div>
 			</div>
