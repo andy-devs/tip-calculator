@@ -22,6 +22,7 @@
 		<!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
 	</head>
 	<body>
+		<img src="./images/logo.svg" class="logo" alt="" />
 		<div class="calculator">
 			<div class="calculator-control">
 				<div class="bill">
@@ -33,7 +34,7 @@
 						id="bill"
 						name="bill"
 						placeholder="0"
-						oninput="validity.valid||(value='');"
+						oninput="validity.valid||(value=value.replace(/-/, ''))"
 					/>
 				</div>
 				<div class="tips">
